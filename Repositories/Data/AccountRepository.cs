@@ -20,8 +20,8 @@ public class AccountRepository : GeneralRepository<int, Account>
 
         Employee employee = new Employee
         {
-            Id = registerVM.Id,
             OfficeCode = registerVM.OfficeCode,
+            ReportsTo = registerVM.ReportsTo,
             FirstName = registerVM.FirstName,
             LastName = registerVM.LastName,
             Email = registerVM.Email,
@@ -32,7 +32,7 @@ public class AccountRepository : GeneralRepository<int, Account>
 
         Account account = new Account
         {
-            Id = registerVM.Id,
+            Id = registerVM.OfficeCode,
             Password = registerVM.Password
         };
         context.Accounts.Add(account);
@@ -40,7 +40,7 @@ public class AccountRepository : GeneralRepository<int, Account>
 
         AccountRole accountRole = new AccountRole
         {
-            AccountId = registerVM.Id,
+            AccountId = registerVM.OfficeCode,
             RoleId = 2
         };
         context.AccountRoles.Add(accountRole);
