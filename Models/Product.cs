@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace MiniProject_MCC75.Models;
 
@@ -24,4 +25,12 @@ public class Product
     public int BuyPrice { get;set; }
     [Required, Column("msrp"), MaxLength(255)]
     public string Msrp { get; set; }
+
+    //relasi & kardinalitas
+    [JsonIgnore]
+    public ICollection<OrderProduct>? OrderProducts { get; set; }
+    [JsonIgnore]
+    [ForeignKey(nameof(ProductlineId))]
+    public ProductLine? ProductLine { get; set; }
+
 }

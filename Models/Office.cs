@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace MiniProject_MCC75.Models;
 
@@ -22,4 +23,8 @@ public class Office
     public string PostalCode { get; set; }
     [Required, Column("territory"), MaxLength(255)]
     public string Territory { get; set; }
+
+    //kardinalitas
+    [JsonIgnore]
+    public ICollection<Employee>? Employees { get; set; }
 }

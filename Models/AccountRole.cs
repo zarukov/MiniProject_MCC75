@@ -15,10 +15,10 @@ public class AccountRole
     public int RoleId { get; set; }
 
     ////relation n cardinality
-    //[JsonIgnore]
-    //[ForeignKey(nameof(AccountNik))]
-    //public Account? Account  { get; set; }
-    //[JsonIgnore]
-    //[ForeignKey(nameof(RoleId))]
-    //public Role? Role  { get; set; }
+    [JsonIgnore]
+    [ForeignKey(nameof(AccountId))]
+    public Account? Account { get; set; }
+    [JsonIgnore]
+    [ForeignKey(nameof(RoleId))]
+    public Role? Role { get; set; }
 }

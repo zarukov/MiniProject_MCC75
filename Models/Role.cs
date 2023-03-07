@@ -13,6 +13,6 @@ public class Role
     public string Name { get; set; }
 
     //cardinality
-    //[JsonIgnore]
-    //public ICollection<AccountRole>? AccountRole  { get; set; }
+    [JsonIgnore]
+    public ICollection<AccountRole>? AccountRole { get; set; }
 }

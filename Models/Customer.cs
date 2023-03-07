@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace MiniProject_MCC75.Models;
 
@@ -30,4 +31,12 @@ public class Customer
     public string Country { get; set; }
     [Required, Column("credit_limit"), MaxLength(255)]
     public int CreditLimit { get; set; }
+
+    //relasi & kardinalitas
+    [JsonIgnore]
+    public ICollection<Order>? Orders { get; set; }
+    [JsonIgnore]
+    public ICollection<Payment>? Payments { get; set; }
+    [JsonIgnore]
+    public Employee? Employee { get; set; }
 }

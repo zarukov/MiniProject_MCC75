@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace MiniProject_MCC75.Models;
 
@@ -16,4 +17,11 @@ public class OrderProduct
     public int Quantity { get; set; }
     [Required, Column("price_each")]
     public int PriceEach { get; set; }
+    //relasi
+    [JsonIgnore]
+    [ForeignKey(nameof(OrderId))]
+    public Customer? Customer { get; set; }
+    [JsonIgnore]
+    [ForeignKey(nameof(ProductId))]
+    public Product? Product { get; set; }
 }

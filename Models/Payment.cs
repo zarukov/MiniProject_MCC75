@@ -1,10 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace MiniProject_MCC75.Models;
 
 [Table("tb_nha_payment")]
-public class payment
+public class Payment
 {
     [Key, Column("check_num")]
     public int CheckNum { get; set; }
@@ -14,4 +15,8 @@ public class payment
     public DateTime PaymentDate { get; set; }
     [Required, Column("amount")]
     public int Amount { get; set; }
+    //relasi
+    [JsonIgnore]
+    [ForeignKey(nameof(CustomerId))]
+    public Customer? Customer { get; set; }
 }

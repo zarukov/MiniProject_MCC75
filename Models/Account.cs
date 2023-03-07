@@ -12,9 +12,10 @@ public class Account
     [Column("password"), MaxLength(255)]
     public string Password { get; set; }
 
-    ////cardinalitty
-    //[JsonIgnore]
-    //public ICollection<AccountRole>? AccountRoles  { get; set; }
-    //[JsonIgnore]
-    //public Employee? Employee  { get; set; }
+    //cardinality
+    [JsonIgnore]
+    public ICollection<AccountRole>? AccountRoles { get; set; }
+    [JsonIgnore]
+    [ForeignKey(nameof(Id))]
+    public Employee? Employee { get; set; }
 }

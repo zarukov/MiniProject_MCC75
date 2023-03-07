@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace MiniProject_MCC75.Models;
 
@@ -22,4 +23,17 @@ public class Employee
     public string Email { get; set; }
     [Required, Column("job_title"), MaxLength(255)]
     public string JobTitle { get; set; }
+
+    //relasi & kardinalitas
+    [JsonIgnore]
+    public ICollection<Customer>? Customers { get; set; }
+    [JsonIgnore]
+    [ForeignKey(nameof(Id))]
+    public Account? Account { get; set; }
+    [JsonIgnore]
+    [ForeignKey(nameof(OfficeCode))]
+    public Office? Office { get; set; }
+    [JsonIgnore]
+    [ForeignKey(nameof(ReportsTo))]
+    public Employee? ReportTo { get; set; }
 }

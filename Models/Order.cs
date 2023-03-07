@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace MiniProject_MCC75.Models;
 
@@ -20,4 +21,11 @@ public class Order
     public int Status { get; set; }
     [Required, Column("comment"), MaxLength(255)]
     public string Comments { get; set; }
+
+    //relasi & kardinalitas
+    [JsonIgnore]
+    public ICollection<OrderProduct> OrderProducts { get; set; }
+    [JsonIgnore]
+    [ForeignKey(nameof(CustomerId))]
+    public Customer? Customer { get; set; }
 }
