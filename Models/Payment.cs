@@ -7,8 +7,8 @@ namespace MiniProject_MCC75.Models;
 [Table("tb_nha_payment")]
 public class Payment
 {
-    [Key, Column("check_num")]
-    public int CheckNum { get; set; }
+    [Key, Column("check_num"), MaxLength(255)]
+    public string CheckNum { get; set; }
     [Required, Column("customer_id")]
     public int CustomerId { get; set; }
     [Required, Column("payment_date")]

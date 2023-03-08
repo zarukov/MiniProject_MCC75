@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace MiniProject_MCC75.Models;
 
-[Table("tb_m_product")]
+[Table("tb_nha_product")]
 public class Product
 {
     [Key, Column("id")]

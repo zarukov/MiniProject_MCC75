@@ -40,7 +40,7 @@ public class MyContext : DbContext
         modelBuilder.Entity<Employee>()
             .HasOne(e => e.Account)
             .WithOne(a => a.Employee)
-            .HasForeignKey<Account>(fk => fk.Id);
+            .HasForeignKey<Account>(fk => fk.EmployeeId);
 
         //tambah relasi many employee to one manager
         modelBuilder.Entity<Employee>()

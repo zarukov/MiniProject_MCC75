@@ -9,8 +9,8 @@ public class Customer
 {
     [Key, Column("id")]
     public int Id { get; set; }
-    [Required, Column("employee_id")]
-    public int EmployeeId { get; set; }
+    [Required, Column("employee_id", TypeName = "nchar(3)")]
+    public string EmployeeId { get; set; }
     [Required, Column("first_name"), MaxLength(255)]
     public string FirstName { get; set; }
     [Column("last_name"), MaxLength(255)]
@@ -25,12 +25,12 @@ public class Customer
     public string City { get; set; }
     [Required, Column("state"), MaxLength(255)]
     public string State { get; set; }
-    [Required, Column("postal_code"), MaxLength(255)]
-    public int PostalCode { get; set; }
+    [Required, Column("postal_code", TypeName = "nchar(5)")]
+    public string PostalCode { get; set; }
     [Required, Column("country"), MaxLength(255)]
     public string Country { get; set; }
     [Required, Column("credit_limit"), MaxLength(255)]
-    public int CreditLimit { get; set; }
+    public string CreditLimit { get; set; }
 
     //relasi & kardinalitas
     [JsonIgnore]

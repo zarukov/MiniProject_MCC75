@@ -6,7 +6,7 @@ using MiniProject_MCC75.ViewModels;
 
 namespace MiniProject_MCC75.Repositories.Data;
 
-public class AccountRepository : GeneralRepository<int, Account>
+public class AccountRepository : GeneralRepository<string, Account>
 {
     private readonly MyContext context;
 
@@ -20,6 +20,7 @@ public class AccountRepository : GeneralRepository<int, Account>
 
         Employee employee = new Employee
         {
+            Id = registerVM.Id,
             OfficeCode = registerVM.OfficeCode,
             ReportsTo = registerVM.ReportsTo,
             FirstName = registerVM.FirstName,
@@ -32,15 +33,15 @@ public class AccountRepository : GeneralRepository<int, Account>
 
         Account account = new Account
         {
-            Id = registerVM.OfficeCode,
-            Password = registerVM.Password
+            EmployeeId = registerVM.Id,
+            Password = Hashing.HashPassword(registerVM.Password)
         };
         context.Accounts.Add(account);
         await context.SaveChangesAsync();
 
         AccountRole accountRole = new AccountRole
         {
-            AccountId = registerVM.OfficeCode,
+            AccountId = registerVM.Id,
             RoleId = 2
         };
         context.AccountRoles.Add(accountRole);
@@ -68,9 +69,9 @@ public class AccountRepository : GeneralRepository<int, Account>
     {
         var userdata = (from e in context.Employees
                         join a in context.Accounts
-                        on e.Id equals a.Id
+                        on e.Id equals a.EmployeeId
                         join ar in context.AccountRoles
-                        on a.Id equals ar.AccountId
+                        on a.EmployeeId equals ar.AccountId
                         join r in context.Roles
                         on ar.RoleId equals r.Id
                         where e.Email == email

@@ -4,18 +4,17 @@ using System.Text.Json.Serialization;
 
 namespace MiniProject_MCC75.Models;
 
-[Table("tb_m_accounts")]
+[Table("tb_nha_accounts")]
 public class Account
 {
-    [Key, Column("id")]
-    public int Id { get; set; }
-    [Column("password"), MaxLength(255)]
+    [Key, Column("employee_id", TypeName = "nchar(3)")]
+    public string EmployeeId { get; set; }
+    [Required, Column("password"), MaxLength(255)]
     public string Password { get; set; }
 
     //cardinality
     [JsonIgnore]
     public ICollection<AccountRole>? AccountRoles { get; set; }
     [JsonIgnore]
-    [ForeignKey(nameof(Id))]
     public Employee? Employee { get; set; }
 }

@@ -5,11 +5,13 @@ namespace MiniProject_MCC75.ViewModels;
 
 public class RegisterVM
 {
+    [Required(ErrorMessage = "ID Must Be Filled")]
+    public string Id { get; set; }
     [Display (Name = "Office Code")]
     [Required(ErrorMessage = "Office Code Must Be Filled.")]
     public int OfficeCode { get; set; }
     [Display(Name = "Reports To")]
-    public int? ReportsTo { get; set; }
+    public string? ReportsTo { get; set; }
     [Display(Name = "First Name")]
     [Required(ErrorMessage = "First Name Must Be Filled.")]
     public string FirstName { get; set; }

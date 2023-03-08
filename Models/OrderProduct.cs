@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace MiniProject_MCC75.Models;
 
-[Table("tb_tr_order_product")]
+[Table("tb_nha_orderproduct")]
 public class OrderProduct
 {
     [Key, Column("id")]
@@ -20,7 +20,7 @@ public class OrderProduct
     //relasi
     [JsonIgnore]
     [ForeignKey(nameof(OrderId))]
-    public Customer? Customer { get; set; }
+    public Order? Order { get; set; }
     [JsonIgnore]
     [ForeignKey(nameof(ProductId))]
     public Product? Product { get; set; }

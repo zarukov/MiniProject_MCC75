@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace MiniProject_MCC75.Models;
 
-[Table("tb_m_roles")]
+[Table("tb_nha_roles")]
 public class Role
 {
     [Key, Column("id")]

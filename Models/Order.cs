@@ -19,12 +19,12 @@ public class Order
     public DateTime ShippedDate { get; set; }
     [Required, Column("status")]
     public int Status { get; set; }
-    [Required, Column("comment"), MaxLength(255)]
-    public string Comments { get; set; }
+    [Column("comment"), MaxLength(255)]
+    public string? Comments { get; set; }
 
     //relasi & kardinalitas
     [JsonIgnore]
-    public ICollection<OrderProduct> OrderProducts { get; set; }
+    public ICollection<OrderProduct>? OrderProducts { get; set; }
     [JsonIgnore]
     [ForeignKey(nameof(CustomerId))]
     public Customer? Customer { get; set; }
